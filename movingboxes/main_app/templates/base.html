@@ -17,10 +17,22 @@
             </div>
             <nav>
                 <ul>
-                    <li>Store Room</li>
-                    <li>New Box</li>
-                    <li>New Label</li>
-                    <li><a href="{% url 'about' %}">About</a></li>
+                    {% if user.is_authenticated %}
+                        <li>Store Room</li>
+                        <li>New Box</li>
+                        <li>New Label</li>
+                        <li><a href="{% url 'about' %}">About</a></li>
+                        <li>
+                            <form action="{% url 'logout' %}" method="post">
+                                {% csrf_token %}
+                                <button type="submit">Log Out</button>
+                            </form>
+                        </li>
+                    {% else %}
+                        <li><a href="{% url 'about' %}">About</a></li>
+                        <li><a href="{% url 'home' %}">Login</a></li>
+                        <li><a href="{% url 'signup' %}">Sign Up</a></li>
+                    {% endif %}
                 </ul>
             </nav>
         </header>
