@@ -2,16 +2,16 @@ from django.db import models
 from django.contrib.auth.models import User
 
 BOX_SIZES = (
-    ('S', 'Small'),
-    ('M', 'Medium'),
-    ('L', 'Large'),
-    ('XL', 'Extra Large')
+    ('0', 'Small'),
+    ('1', 'Medium'),
+    ('2', 'Large'),
+    ('3', 'Extra Large')
 )
 # Create your models here.
 class Box(models.Model):
     name = models.CharField(max_length=20)
     size = models.CharField(
-        max_length=2,
+        max_length=1,
         choices=BOX_SIZES,
         default=BOX_SIZES[1][0]
     )
